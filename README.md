@@ -225,4 +225,11 @@ si en otro momento llega a aparecer otro proveedor se va a poder extender sin ne
 <img width="1260" height="583" alt="image" src="https://github.com/user-attachments/assets/19af935d-ba9b-4e87-9bcd-f6e8e01780e2" />
 
 
+=======
+## evideencias de compilacion 
+<img width="1879" height="986" alt="image" src="https://github.com/user-attachments/assets/266cc5d4-7806-4c2e-bd9d-b9de07180a7b" />
+
+## Evidencia de Estructura
+<img width="435" height="702" alt="image" src="https://github.com/user-attachments/assets/b53a5913-deab-43b8-9915-9b2f47c0af01" />
+
 
