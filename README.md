@@ -24,5 +24,11 @@
 
 
 
+## punto 7 
+![img.png](img.png)
+Single responsability
+cada clase tendra que tener unas sola responsabilidad 
+open/close 
+si en otro momento llega a aparecer otro proveedor se va a poder extender sin necesidad de cambiar  
 
 
