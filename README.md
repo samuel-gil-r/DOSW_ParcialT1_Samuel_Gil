@@ -13,13 +13,6 @@
 - un patron Estructural
 - justificacion : tengo 4 proveedores que se comunican de manera distinta esto me lleva a elegirlo "Cada proveedor expone la información de forma distinta"
 
--Implementare Strategy 
-- un patron Comportamiento
-- para poder cambiar de proveedor sin necesidad de cambiar codigo con el puedo encapsular esa logica de seleccion 
-"El sistema debe permitir cambiar de proveedor sin modificar el código del
-  proceso principal de pago."
-
-
 
 
 
