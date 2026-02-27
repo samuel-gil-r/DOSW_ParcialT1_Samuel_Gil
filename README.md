@@ -46,8 +46,76 @@ quiero validar los datos de cada solicitud antes del proceso
 para rechazar las solicitudes invalidas 
 
 ##punto #5
+# RF1 – Procesar Pago con Proveedor Adecuado
+
+**Tipo:** Funcional  
+**Prioridad:** Alta  
+**Patrón:** Abstract Factory + Adapter
+
+---
+
+## Descripción
+El sistema procesa una solicitud de pago seleccionando automáticamente el proveedor según medio y moneda. La respuesta siempre se adapta al formato institucional estándar.
+
+---
+
+## Actores
+- **Principal:** Usuario institucional
+- **Secundarios:** PayU, ePayco, Stripe, BancoPSE
+
+---
+
+## Precondiciones
+- Solicitud completa enviada
+- Validación RF2 aprobada
+- Al menos un proveedor disponible
+
+## Flujo Principal
+1. Usuario envía solicitud
+2. Sistema valida (RF2)
+3. Selección de proveedor:
+    - USD → Stripe
+    - PSE → BancoPSE
+    - TARJETA → PayU
+    - Otro → ePayco
+4. Abstract Factory crea conector y normalizador
+5. Se envía solicitud al proveedor
+6. Adapter normaliza respuesta
+7. Sistema retorna respuesta estándar
+
+---
+
+## Flujos Alternativos
+**Validación falla**  
+→ Estado RECHAZADO  
+→ No se contacta proveedor
+
+**Proveedor falla**  
+→ Estado PENDIENTE  
+→ Mensaje: "Transacción en validación bancaria"
+
+---
+## Postcondiciones
+- Pago registrado en MongoDB Atlas
+- Respuesta estándar: `estado | codigoTransaccion | mensaje | fecha`
+- Certificado guardado en S3 (si aplica)
+
+---
+
+## Reglas de Negocio
+- USD → Solo Stripe
+- PSE → Solo BancoPSE
+- Falla proveedor → PENDIENTE
+- Respuesta siempre en formato estándar
+- Campos extra del proveedor se ignoran
+
+## Excepciones
+- Proveedor no disponible → PENDIENTE
+- Medio no reconocido → ePayco (por defecto)  
+
 
 ## punto 7 
+
 ![img.png](img.png)
 Single responsability
 cada clase tendra que tener unas sola responsabilidad 
