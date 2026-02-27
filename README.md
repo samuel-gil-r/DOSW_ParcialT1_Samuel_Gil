@@ -216,10 +216,13 @@ Orquesta el flujo:
       └── T5 Procesador
 ## punto 7 
 
-![img.png](img.png)
+
 Single responsability
 cada clase tendra que tener unas sola responsabilidad 
 open/close 
 si en otro momento llega a aparecer otro proveedor se va a poder extender sin necesidad de cambiar  
+
+<img width="1260" height="583" alt="image" src="https://github.com/user-attachments/assets/19af935d-ba9b-4e87-9bcd-f6e8e01780e2" />
+
 
 
