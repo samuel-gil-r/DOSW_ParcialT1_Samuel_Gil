@@ -2,7 +2,7 @@
 ## Samuel Antonio Gil Romero
 ## DOSW-2
 ## Herramientas de modelado
-![Draw.io](docs/evidencias/drawio.png)
+![Draw.io](docs/images/drawio.png)
 
 ## Herramienta de diseño
-![Figma](docs/evidencias/figma.png)
+![Figma](docs/images/figma.png)
