@@ -6,3 +6,5 @@
 
 ## Herramienta de diseño
 ![Figma](docs/images/figma.png)
+## punto 1 digrama de contexto 
+![img.png](img.png)
