@@ -113,7 +113,107 @@ El sistema procesa una solicitud de pago seleccionando automáticamente el prove
 - Proveedor no disponible → PENDIENTE
 - Medio no reconocido → ePayco (por defecto)  
 
+## punto 6 
+# Épica: Integración con Proveedores de Pago
 
+El sistema debe procesar pagos institucionales usando cualquier proveedor (PayU, ePayco, Stripe, BancoPSE) sin acoplar el flujo a una implementación específica y retornando siempre respuesta en formato estándar.
+
+---
+
+## Historia de Usuario
+
+**Como** usuario institucional  
+**Quiero** pagar con mi medio preferido (tarjeta, PSE, transferencia)  
+**Para** completar mi trámite y recibir el estado del pago sin importar el proveedor.
+
+### Criterios de Aceptación
+- USD → Stripe obligatorio
+- PSE → BancoPSE obligatorio
+- Si proveedor falla → PENDIENTE
+- Respuesta en formato estándar
+- Tiempo máximo: 3 segundos
+
+---
+
+# Tareas
+
+## T1 – Interfaces Base
+Definir contratos del sistema:
+
+- `IProveedorFactory` → crearConector(), crearNormalizador()
+- `IConector` → enviarPago()
+- `INormalizador` → normalizar()
+
+**Patrón:** Abstract Factory + Adapter  
+**SOLID:** ISP + DIP
+
+---
+
+## T2 – Fábricas Concretas
+Implementar 4 fábricas:
+
+- PayUFactory
+- StripeFactory
+- PSEFactory
+- ePaycoFactory
+
+Cada una crea su conector y normalizador.
+
+**Patrón:** Abstract Factory  
+**SOLID:** Open/Closed
+
+---
+
+## T3 – Normalizadores (Adapters)
+Traducen la respuesta del proveedor a `RespuestaPago` estándar.
+
+- PayU → JSON
+- Stripe → SDK
+- PSE → Texto
+- ePayco → SHA
+
+**Patrón:** Adapter  
+**SOLID:** Single Responsibility
+
+---
+
+## T4 – SelectorFactory
+Reglas de negocio:
+
+- USD → StripeFactory
+- PSE → PSEFactory
+- TARJETA → PayUFactory
+- Otro → ePaycoFactory
+
+**Patrón:** Abstract Factory  
+**SOLID:** SRP
+
+---
+
+## T5 – ProcesadorPago
+Orquesta el flujo:
+
+1. validar() → si falla: RECHAZADO
+2. seleccionar factory
+3. crearConector()
+4. enviarPago()
+5. normalizar()
+6. Error proveedor → PENDIENTE
+
+**Patrón:** Abstract Factory + Adapter  
+
+
+---
+
+## Resumen
+
+Épica  
+└── Historia de Usuario  
+      ├── T1 Interfaces  
+      ├── T2 Fábricas  
+      ├── T3 Adapters  
+      ├── T4 Selector  
+      └── T5 Procesador
 ## punto 7 
 
 ![img.png](img.png)
