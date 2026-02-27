@@ -7,7 +7,7 @@
 ## Herramienta de diseño
 ![Figma](docs/images/figma.png)
 ## punto 1 digrama de contexto 
-![img.png](docs/images/img.png)
+![img_1.png](docs/images/img_1.png)
 ## punto 2 Patrones de diseño que eligire para el ejercicio ECI PAYMENT INTEGRATION HUB
 -Implementare Adapter 
 - un patron Estructural
