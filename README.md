@@ -32,6 +32,8 @@
 diagrama de casos de uso
 ![img_1.png](docs/images/img_1.png)
 ![img_1.png](docs/images/img_1.png)
+
+  
 historia de usuario 
 RF1: procesar pago 
 como usuario estudiantil  
